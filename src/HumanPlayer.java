@@ -8,8 +8,8 @@ public class HumanPlayer extends Player {
     Scanner playerInput;
 
 
-    public HumanPlayer(String name, char piece) {
-        super(name, piece);
+    public HumanPlayer(String name, char piece, Board gameBoard) {
+        super(name, piece, gameBoard);
         playerInput = new Scanner(System.in);
     }
 

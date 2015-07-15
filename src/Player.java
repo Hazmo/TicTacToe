@@ -3,11 +3,11 @@
  */
 public abstract class Player {
 
-    private String name;
-    private char piece;
-    private boolean isAI;
+    protected String name;
+    protected char piece;
+    protected Board gameBoard;
 
-    public Player(String name, char piece) {
+    public Player(String name, char piece, Board gameBoard) {
         this.name = name;
         this.piece = piece;
     }

@@ -4,9 +4,8 @@ import java.util.Scanner;
 /**
  * Created by harry on 09/07/2015.
  */
-public class MinMaxPlayer extends AIPlayer{
+public class MinMaxPlayer extends Player{
 
-    Board boardCopy;
     Node root;
     char playerPiece;
     char opponentPiece;
@@ -23,27 +22,6 @@ public class MinMaxPlayer extends AIPlayer{
         } else {
             opponentPiece = 'x';
         }
-    }
-
-    @Override
-    public int determineMove() {
-        boardCopy = gameBoard;
-        System.out.println("----1");
-        boardCopy.printBoard();
-        System.out.println("-----1");
-
-        root = new Node(boardCopy, 0);
-
-        int bestScore = minimax(root, true, 0);
-
-        //System.out.println(bestScore);
-
-        int move = -1;
-
-
-        move = getMoveFromMinMaxTree(root);
-        System.out.println(move);
-        return move;
     }
 
     private int getMoveFromMinMaxTree(Node root) {
@@ -103,7 +81,23 @@ public class MinMaxPlayer extends AIPlayer{
 
     @Override
     public int getMove() {
-        return determineMove();
+        Board boardCopy = gameBoard;
+        System.out.println("----1");
+        boardCopy.printBoard();
+        System.out.println("-----1");
+
+        root = new Node(boardCopy, 0);
+
+        int bestScore = minimax(root, true, 0);
+
+        //System.out.println(bestScore);
+
+        int move = -1;
+
+
+        move = getMoveFromMinMaxTree(root);
+        System.out.println(move);
+        return move;
     }
 
 
@@ -144,7 +138,7 @@ public class MinMaxPlayer extends AIPlayer{
         //MinMaxPlayer player = new MinMaxPlayer("Player", 'O', new Board(new char[][]{{'-', 'X', '-'}, {'-', '-', 'X'}, {'O', 'O', 'X'}}))
         MinMaxPlayer player = new MinMaxPlayer("Player", 'o', new Board(new char[][]{{'x', 'o', '-'}, {'-', 'x', '-'}, {'-', '-', '-'}}));
         //MinMaxPlayer player = new MinMaxPlayer("Player", 'X', new Board(3));
-        player.determineMove();
+        player.getMove();
     }
 
 
