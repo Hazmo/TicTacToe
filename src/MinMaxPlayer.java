@@ -64,7 +64,8 @@ public class MinMaxPlayer extends AIPlayer{
 
 
     private void generatePossibleMoves(Node currentNode, boolean max) {
-        //char[][] currentBoardArray = currentNode.getBoard().getBoardArray();
+        Board currentBoard = currentNode.getBoard();
+        char[][] nextBoardArray;
 
         char piece;
 
@@ -74,23 +75,20 @@ public class MinMaxPlayer extends AIPlayer{
             piece = opponentPiece;
         }
 
-        for(int i = 1; i < 10; i++) {
-            char[][] nextBoardArray = currentNode.getBoard().copyBoardArray();
+        for(int move : currentBoard.getAvailableMoves()) {
+            nextBoardArray = currentNode.getBoard().copyBoardArray();
             Board nextBoard = new Board(nextBoardArray);
 
             if(nextBoard.checkWinner()) {
                 break;
             }
 
-            if(nextBoard.move(i, piece)) {
-               // nextBoard.printBoard();
-                currentNode.appendChild(new Node(nextBoard, i));
-
-                //System.out.println(nextBoard.checkWinner());
+            if(nextBoard.move(move, piece)) {
+                currentNode.appendChild(new Node(nextBoard, move));
             }
-            //new Scanner(System.in).next();
         }
     }
+
     private int score(Board board, boolean max, int level) {
         if(board.checkWinner()) {
             if (max) {

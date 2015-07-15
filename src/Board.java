@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by harry on 08/07/2015.
  */
@@ -125,6 +128,21 @@ public class Board {
         }
 
         return gameBoardArrayCopy;
+    }
+
+    public ArrayList<Integer> getAvailableMoves() {
+        ArrayList<Integer> availableMoves = new ArrayList<Integer>();
+
+        for (int i = 0; i < gameBoardArray.length; i++) {
+            for (int j = 0; j < gameBoardArray[i].length; j++) {
+                if(gameBoardArray[i][j] == '-') {
+                    int pos = (3 * i + 1) + j;
+                    availableMoves.add(pos);
+                }
+            }
+
+        }
+        return availableMoves;
     }
 
 }
