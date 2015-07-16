@@ -10,6 +10,7 @@ public abstract class Player {
     public Player(String name, char piece, Board gameBoard) {
         this.name = name;
         this.piece = piece;
+        this.gameBoard = gameBoard;
     }
 
     public char getPiece() {

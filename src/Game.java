@@ -17,12 +17,34 @@ public class Game {
     public Game() {
         gameBoard = new Board(3);
 
-        player1 = new MinMaxPlayer("Human", 'x', gameBoard);
-        player2 = new MinMaxPlayer("Random", 'o', gameBoard);
-
         gameInput = new Scanner(System.in);
 
+        player1 = selectPlayer(1, 'x', gameBoard, "player 1");
+        player2 = selectPlayer(2, 'o', gameBoard, "player 2");
+
+
         mainLoop();
+
+    }
+
+    private Player selectPlayer(int playerNo, char piece, Board gameBoard, String name) {
+        System.out.println("Please select the difficulty for player "+ playerNo + ":");
+        System.out.println("1. Human");
+        System.out.println("2. Easy");
+        System.out.println("3. Hard");
+        int choice = gameInput.nextInt();
+        //System.out.println("Please enter a name for the player: ");
+        //String name = gameInput.next();
+
+        if (choice == 1) {
+            return new HumanPlayer(name, piece, gameBoard);
+        } else if(choice == 2) {
+            return new RandomPlayer(name, piece, gameBoard);
+        } else if(choice == 3) {
+            return new MinMaxPlayer(name, piece, gameBoard);
+        }
+
+        return null;
 
     }
 
