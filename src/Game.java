@@ -31,16 +31,19 @@ public class Game {
         System.out.println("Please select the difficulty for player "+ playerNo + ":");
         System.out.println("1. Human");
         System.out.println("2. Easy");
-        System.out.println("3. Hard");
+        System.out.println("3. Medium");
+        System.out.println("4. Hard");
         int choice = gameInput.nextInt();
         //System.out.println("Please enter a name for the player: ");
         //String name = gameInput.next();
 
         if (choice == 1) {
             return new HumanPlayer(name, piece, gameBoard);
-        } else if(choice == 2) {
+        } else if (choice == 2) {
             return new RandomPlayer(name, piece, gameBoard);
-        } else if(choice == 3) {
+        } else if (choice == 3) {
+            return new MediumPlayer(name, piece, gameBoard);
+        } else if (choice == 4) {
             return new MinMaxPlayer(name, piece, gameBoard);
         }
 

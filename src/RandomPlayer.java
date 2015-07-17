@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -15,12 +16,9 @@ public class RandomPlayer extends Player {
 
     @Override
     public int getMove() {
-        int pos = rng.nextInt(9) + 1;
+        ArrayList<Integer> availableMoves = gameBoard.getAvailableMoves();
+        int index = rng.nextInt(availableMoves.size());
 
-        while(!gameBoard.isEmpty(pos)) {
-            pos = rng.nextInt(9) + 1;
-        }
-
-        return pos;
+        return availableMoves.get(index);
     }
 }

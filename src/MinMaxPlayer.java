@@ -82,10 +82,6 @@ public class MinMaxPlayer extends Player{
     @Override
     public int getMove() {
         Board boardCopy = gameBoard;
-        System.out.println("----1");
-        boardCopy.printBoard();
-        System.out.println("-----1");
-
         root = new Node(boardCopy, 0);
 
         int bestScore = minimax(root, true, 0);
