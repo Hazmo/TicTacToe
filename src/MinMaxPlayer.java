@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-
 /**
  * Created by harry on 09/07/2015.
  */
