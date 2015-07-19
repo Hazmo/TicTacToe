@@ -9,6 +9,10 @@ public class Board {
     private char gameBoardArray[][];
 
     public Board(int size) {
+       createBoard(size);
+    }
+
+    public void createBoard(int size) {
         gameBoardArray = new char[size][size];
 
         for (int i = 0; i < gameBoardArray.length; i++) {
@@ -143,6 +147,10 @@ public class Board {
 
         }
         return availableMoves;
+    }
+
+    public void reset(int size) {
+        createBoard(size);
     }
 
 }

@@ -1,3 +1,5 @@
+import graphics.GameGUI;
+
 import java.util.Scanner;
 
 /**
@@ -14,6 +16,8 @@ public class Game {
 
     boolean isWinner = false;
 
+    GameGUI gameGUI;
+
     public Game() {
         gameBoard = new Board(3);
 
@@ -22,6 +26,7 @@ public class Game {
         player1 = selectPlayer(1, 'x', gameBoard, "player 1");
         player2 = selectPlayer(2, 'o', gameBoard, "player 2");
 
+        gameGUI = new GameGUI();
 
         mainLoop();
 
@@ -72,6 +77,7 @@ public class Game {
                 System.out.println(currentPlayer.getName() + ", please choose another position" + " " + pos);
                 pos = currentPlayer.getMove();
             }
+            gameGUI.addPiece(pos, currentPlayer.getPiece());
             gameBoard.printBoard();
 
             isWinner = gameBoard.checkWinner();
@@ -114,7 +120,8 @@ public class Game {
         //gameBoard = new Board(3, this);
         //isWinner = false;
 
-        new Game();
+        gameBoard.reset(3);
+        gameGUI.reset();
 
         //mainLoop();
     }

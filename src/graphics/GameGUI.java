@@ -16,6 +16,7 @@ public class GameGUI extends JFrame {
         add(panel);
         setResizable(false);
         setVisible(true);
+        pack();
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
@@ -25,6 +26,13 @@ public class GameGUI extends JFrame {
         } else {
             panel.noughtList.add(new Nought(move));
         }
+
+        panel.repaint();
+    }
+
+    public void reset() {
+        panel.crossList.clear();
+        panel.noughtList.clear();
 
         panel.repaint();
     }
