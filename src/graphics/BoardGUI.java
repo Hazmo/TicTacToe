@@ -16,12 +16,21 @@ public class BoardGUI extends JPanel {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
-        g.setColor(Color.BLACK);
-        g.fillRect(150, 0, 10, 470);
-        g.fillRect(310, 0, 10, 470);
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        g.fillRect(0, 150, 470, 10);
-        g.fillRect(0, 310, 470, 10);
+        g2d.setColor(Color.BLACK);
+        g2d.fillRect(150, 0, 10, 470);
+        g2d.fillRect(310, 0, 10, 470);
+
+        g2d.fillRect(0, 150, 470, 10);
+        g2d.fillRect(0, 310, 470, 10);
+
+        g2d.setStroke(new BasicStroke(5));
+
+        g2d.drawOval(160 + 10, 2 * 160 + 10, 130, 130);
+
+
+        new Cross(5).paintComponent(g2d);
 
 
     }
