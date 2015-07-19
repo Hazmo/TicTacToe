@@ -27,10 +27,11 @@ public class BoardGUI extends JPanel {
 
         g2d.setStroke(new BasicStroke(5));
 
-        g2d.drawOval(160 + 10, 2 * 160 + 10, 130, 130);
+        //g2d.drawOval(160 + 10, 2 * 160 + 10, 130, 130);
 
 
-        new Cross(5).paintComponent(g2d);
+        new Cross(2).paintComponent(g2d);
+        new Nought(3).paintComponent(g2d);
 
 
     }

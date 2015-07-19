@@ -21,8 +21,8 @@ public class Cross {
         int rowSquare = row * 160;
         int colSquare = col * 160;
 
-        g2d.drawLine(rowSquare + 10, colSquare + 10, rowSquare + 140, colSquare + 140);
-        g2d.drawLine(rowSquare + 140, colSquare + 10, rowSquare + 10, colSquare + 140);
+        g2d.drawLine(colSquare + 10, rowSquare + 10, colSquare + 140, rowSquare + 140);
+        g2d.drawLine(colSquare + 140, rowSquare + 10, colSquare + 10, rowSquare + 140);
 
     }
 }
