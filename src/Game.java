@@ -1,5 +1,3 @@
-import graphics.GameGUI;
-
 import java.util.Scanner;
 
 /**
@@ -7,16 +5,14 @@ import java.util.Scanner;
  */
 public class Game {
 
-    Board gameBoard;
-    Player player1;
-    Player player2;
-    Player currentPlayer;
+    private Board gameBoard;
+    private Player player1;
+    private Player player2;
+    private Player currentPlayer;
 
-    Scanner gameInput;
+    private Scanner gameInput;
 
-    boolean isWinner = false;
-
-    GameGUI gameGUI;
+    private boolean isWinner = false;
 
     public Game() {
         gameBoard = new Board(3);
@@ -26,10 +22,10 @@ public class Game {
         player1 = selectPlayer(1, 'x', gameBoard, "player 1");
         player2 = selectPlayer(2, 'o', gameBoard, "player 2");
 
-        gameGUI = new GameGUI();
+    }
 
+    public void start() {
         mainLoop();
-
     }
 
     private Player selectPlayer(int playerNo, char piece, Board gameBoard, String name) {
@@ -77,7 +73,6 @@ public class Game {
                 System.out.println(currentPlayer.getName() + ", please choose another position" + " " + pos);
                 pos = currentPlayer.getMove();
             }
-            gameGUI.addPiece(pos, currentPlayer.getPiece());
             gameBoard.printBoard();
 
             isWinner = gameBoard.checkWinner();
@@ -94,14 +89,14 @@ public class Game {
     public void winner(Player player) {
         System.out.println(player.getName() + " is the winner!");
         if (playAgain()) {
-            restart();
+            reset();
         }
     }
 
     private void draw() {
         System.out.println("It's a draw!");
         if(playAgain()) {
-            restart();
+            reset();
         }
     }
 
@@ -116,15 +111,7 @@ public class Game {
         }
     }
 
-    private void restart() {
-        //gameBoard = new Board(3, this);
-        //isWinner = false;
-
+    private void reset() {
         gameBoard.reset(3);
-        gameGUI.reset();
-
-        //mainLoop();
     }
-
-
 }

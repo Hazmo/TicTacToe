@@ -22,7 +22,6 @@ public class Board {
 
         }
     }
-
     public Board(char[][] gameBoardArray) {
         this.gameBoardArray = gameBoardArray;
     }
@@ -37,7 +36,6 @@ public class Board {
     }
 
     public boolean move(int pos, Player player) {
-
         int row = (pos - 1) / 3;
         int col = (pos - 1) % 3;
 
@@ -152,5 +150,4 @@ public class Board {
     public void reset(int size) {
         createBoard(size);
     }
-
 }

@@ -10,8 +10,6 @@ public class MinMaxPlayer extends Player{
     public MinMaxPlayer(String name, char piece, Board gameBoard) {
         super(name, piece, gameBoard);
 
-        //gameBoard.printBoard();
-
         playerPiece = piece;
 
         if(playerPiece == 'x') {
@@ -81,12 +79,9 @@ public class MinMaxPlayer extends Player{
         Board boardCopy = gameBoard;
         root = new Node(boardCopy, 0);
 
-        int bestScore = minimax(root, true, 0);
-
-        //System.out.println(bestScore);
+        minimax(root, true, 0);
 
         int move = -1;
-
 
         move = getMoveFromMinMaxTree(root);
         System.out.println(move);
@@ -99,10 +94,6 @@ public class MinMaxPlayer extends Player{
         level += 1;
         if (node.isLeaf()) {
             node.setScore(score(node.getBoard(), max, level));
-            //System.out.println("-----");
-            //node.getBoard().printBoard();
-            //System.out.println(node.getScore());
-            //System.out.println("-----");
             return score(node.getBoard(), max, level);
         }
 
@@ -126,13 +117,4 @@ public class MinMaxPlayer extends Player{
         }
 
     }
-
-    public static void main(String args[]) {
-        //MinMaxPlayer player = new MinMaxPlayer("Player", 'O', new Board(new char[][]{{'-', 'X', '-'}, {'-', '-', 'X'}, {'O', 'O', 'X'}}))
-        MinMaxPlayer player = new MinMaxPlayer("Player", 'o', new Board(new char[][]{{'x', 'o', '-'}, {'-', 'x', '-'}, {'-', '-', '-'}}));
-        //MinMaxPlayer player = new MinMaxPlayer("Player", 'X', new Board(3));
-        player.getMove();
-    }
-
-
 }
